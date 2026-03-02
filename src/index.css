@@ -73,3 +73,11 @@ h1 {
 } */
 
 @import "tailwindcss";
+
+.ibarra-real-nova {
+  font-family: "Ibarra Real Nova", serif;
+}
+
+.public-sans {
+  font-family: "Public Sans", sans-serif;
+}
