@@ -5,7 +5,7 @@ import Button from "./Button";
 
 export default function Home() {
   return (
-    <main className="p-4 md:p-8">
+    <main className="pt-20 p-4 md:p-8">
       <section className="">
         <img src={hero} alt="" className="block w-full" />
         <div className="pt-3 flex flex-col gap-8">
@@ -14,7 +14,7 @@ export default function Home() {
           </h1>
           <a href="" className="flex bg-blue-950 max-w-50 ">
             <img src={downArrows} alt="" className="p-4" />
-            <span className="public-sans uppercase text-white text-xs  py-4 mx-auto">
+            <span className="public-sans uppercase text-white text-xs py-4 mx-auto">
               About Me
             </span>
           </a>
