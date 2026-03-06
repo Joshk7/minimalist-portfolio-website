@@ -23,14 +23,14 @@ export default function Header() {
   };
 
   return (
-    <header className="p-4 fixed bg-white w-full">
+    <header className="p-4 fixed z-1 md:px-10 md:pt-16 md:pb-12 bg-white w-full">
       <nav aria-label="Primary" className="flex justify-between align-center">
         <img src={logo} alt="" className="block" />
         <button
           onClick={isMenuOpen ? handleCloseMenu : handleOpenMenu}
           aria-expanded={isMenuOpen}
           aria-controls="menu"
-          className="cursor-pointer"
+          className="cursor-pointer md:hidden"
         >
           <img
             src={isMenuOpen ? close : hamburger}
@@ -38,12 +38,12 @@ export default function Header() {
             className="block min-w-6 hover:opacity-50"
           />
         </button>
-        <ul id="menu" className="hidden">
+        <ul id="menu" className="hidden md:flex gap-10">
           <li>
-            <a href="#">Home</a>
+            <a href="#" className="text-sm text-slate-950 public-sans tracking-[0.165em] uppercase hover:text-teal-400">Home</a>
           </li>
           <li>
-            <a href="#">Contact Me</a>
+            <a href="#" className="text-sm text-slate-950 public-sans tracking-[0.165em] uppercase hover:text-teal-400">Contact Me</a>
           </li>
         </ul>
       </nav>
