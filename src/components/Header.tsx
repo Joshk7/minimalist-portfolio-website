@@ -1,8 +1,15 @@
+import { useRef, useState } from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import hamburger from "../assets/icons/hamburger.svg";
 import close from "../assets/icons/close.svg";
-import { useRef, useState } from "react";
 import Dialog from "./Dialog";
+
+const navClass = ({ isActive }: { isActive: boolean }) =>
+  `text-sm public-sans tracking-[0.165em] uppercase hover:text-blue-500 ${isActive ? "text-blue-500" : "text-slate-950"}`;
+
+const mobileNavClass = ({ isActive }: { isActive: boolean }) =>
+  `public-sans uppercase text-xs tracking-[0.165em] ${isActive ? "text-blue-500" : "text-white"}`;
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -23,7 +30,7 @@ export default function Header() {
   };
 
   return (
-    <header className="p-4 fixed z-1 md:px-10 md:pt-16 md:pb-12 bg-white w-full">
+    <header className="p-4 fixed z-1 md:p-8 bg-white w-full">
       <nav aria-label="Primary" className="flex justify-between align-center">
         <img src={logo} alt="" className="block" />
         <button
@@ -39,21 +46,66 @@ export default function Header() {
           />
         </button>
         <ul id="menu" className="hidden md:flex gap-10">
-          <li>
-            <a href="#" className="text-sm text-slate-950 public-sans tracking-[0.165em] uppercase hover:text-teal-400">Home</a>
+          <li className="flex items-center">
+            <NavLink to="/" end className={navClass}>
+              Home
+            </NavLink>
           </li>
-          <li>
-            <a href="#" className="text-sm text-slate-950 public-sans tracking-[0.165em] uppercase hover:text-teal-400">Contact Me</a>
+          <li className="flex items-center">
+            <NavLink to="/projects" className={navClass}>
+              Projects
+            </NavLink>
+          </li>
+          <li className="flex items-center">
+            <NavLink to="/resume" className={navClass}>
+              Resume
+            </NavLink>
+          </li>
+          <li className="flex items-center">
+            <NavLink to="/contact" className={navClass}>
+              Contact Me
+            </NavLink>
           </li>
         </ul>
       </nav>
       <Dialog ref={menuRef}>
-        <ul className="fixed top-16 right-4 flex flex-col items-center gap-8 bg-slate-950 px-16 py-10">
-          <li>
-            <a onClick={handleCloseMenu} href="#" className="text-white public-sans uppercase text-xs tracking-[0.165em] w-full">Home</a>
+        <ul className="fixed top-16 right-0 flex flex-col items-center bg-slate-950">
+          <li className="px-5 py-6">
+            <NavLink
+              onClick={handleCloseMenu}
+              to="/"
+              end
+              className={mobileNavClass}
+            >
+              Home
+            </NavLink>
           </li>
-          <li>
-            <a onClick={handleCloseMenu} href="#" className="text-white public-sans uppercase text-xs tracking-[0.165em]">Contact Me</a>
+          <li className="px-5 py-6">
+            <NavLink
+              onClick={handleCloseMenu}
+              to="/projects"
+              className={mobileNavClass}
+            >
+              Projects
+            </NavLink>
+          </li>
+          <li className="px-5 py-6">
+            <NavLink
+              onClick={handleCloseMenu}
+              to="/resume"
+              className={mobileNavClass}
+            >
+              Resume
+            </NavLink>
+          </li>
+          <li className="px-5 py-6">
+            <NavLink
+              onClick={handleCloseMenu}
+              to="/contact"
+              className={mobileNavClass}
+            >
+              Contact Me
+            </NavLink>
           </li>
         </ul>
       </Dialog>
