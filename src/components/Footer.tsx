@@ -7,7 +7,7 @@ export default function Footer() {
     `text-sm public-sans tracking-[0.165em] uppercase hover:text-blue-500 ${isActive ? "text-blue-500" : "text-white"}`;
 
   return (
-    <footer className="bg-slate-950 flex flex-col items-center py-14 gap-10 md:flex-row md:px-8 justify-between">
+    <footer className="bg-slate-950 flex flex-col items-center py-14 gap-10 md:flex-row md:p-8 justify-between">
       <nav>
         <ul className="flex flex-col items-center gap-10 md:flex-row">
           <li>
@@ -39,6 +39,7 @@ export default function Footer() {
               href="https://github.com/Joshk7"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-blue-500"
             >
               <img src={github} alt="GitHub Logo" />
             </a>
@@ -48,6 +49,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/josh-kahlbaugh-8a307a221"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-blue-500"
             >
               <img src={linkedin} alt="LinkedIn Logo" />
             </a>
