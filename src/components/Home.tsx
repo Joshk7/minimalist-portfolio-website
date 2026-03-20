@@ -23,7 +23,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="max-w-277.5 mx-auto flex flex-col gap-8 mt-12 md:mt-24 md:gap-16 md:flex-row md:justify-between px-4 md:px-8 lg:px-0 lg:gap-24">
+      <section className="max-w-277.5 mx-auto flex flex-col gap-8 mt-12 md:mt-24 md:gap-16 md:flex-row md:justify-between px-8 lg:px-0 lg:gap-24">
         <picture id="about-me" className="flex-1">
           <img
             src={profile}
@@ -46,7 +46,7 @@ export default function Home() {
           </p>
         </article>
       </section>
-      <section className="max-w-277.5 mx-auto py-20 px-4 md:px-8 md:py-24 flex flex-col gap-10 md:flex-row md:justify-between md:items-center lg:px-0">
+      <section className="max-w-277.5 mx-auto py-20 px-8 md:py-24 flex flex-col gap-10 md:flex-row md:justify-between md:items-center lg:px-0">
         <h2 className="ibarra-real-nova text-3xl font-bold text-center mx-auto md:text-4xl md:min-w-80 md:text-left md:flex-1 lg:text-5xl lg:min-w-100">
           Have something in mind? Let's chat.
         </h2>
