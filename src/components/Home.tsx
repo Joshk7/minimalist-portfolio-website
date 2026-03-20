@@ -1,6 +1,6 @@
+import { NavLink } from "react-router";
 import hero from "../assets/portfolio/hero.mp4";
 import profile from "../assets/portfolio/profile.jpg";
-import Button from "./Button";
 
 export default function Home() {
   return (
@@ -51,7 +51,9 @@ export default function Home() {
           Have something in mind? Let's chat.
         </h2>
         <hr className="hidden border border-slate-800/15 md:block md:flex-1" />
-        <Button className="flex-1">Contact Me</Button>
+        <NavLink to="/contact" className="flex-1 block mx-auto border border-slate-950 py-4 px-8 public-sans uppercase tracking-[0.165em] text-xs cursor-pointer hover:bg-slate-950 hover:text-white max-w-42">
+          Contact Me
+        </NavLink>
       </section>
     </main>
   );
