@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.svg";
 import hamburger from "../assets/icons/hamburger.svg";
 import close from "../assets/icons/close.svg";
 import Dialog from "./Dialog";
@@ -32,7 +31,10 @@ export default function Header() {
   return (
     <header className="p-4 fixed z-1 md:p-8 bg-white w-full">
       <nav aria-label="Primary" className="flex justify-between align-center">
-        <img src={logo} alt="" className="block" />
+        {/* <img src={logo} alt="" className="block" /> */}
+        <NavLink to="/" end className="momo-signature hover:text-blue-500">
+          Joshua Kahlbaugh
+        </NavLink>
         <button
           onClick={isMenuOpen ? handleCloseMenu : handleOpenMenu}
           aria-expanded={isMenuOpen}
@@ -51,7 +53,7 @@ export default function Header() {
               Home
             </NavLink>
           </li>
-          <li className="flex items-center">
+          {/* <li className="flex items-center">
             <NavLink to="/projects" className={navClass}>
               Projects
             </NavLink>
@@ -60,7 +62,7 @@ export default function Header() {
             <NavLink to="/resume" className={navClass}>
               Resume
             </NavLink>
-          </li>
+          </li> */}
           <li className="flex items-center">
             <NavLink to="/contact" className={navClass}>
               Contact Me

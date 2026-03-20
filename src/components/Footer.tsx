@@ -15,7 +15,7 @@ export default function Footer() {
               Home
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/projects" className={navClass}>
               Projects
             </NavLink>
@@ -24,7 +24,7 @@ export default function Footer() {
             <NavLink to="/resume" className={navClass}>
               Resume
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/contact" className={navClass}>
               Contact Me
