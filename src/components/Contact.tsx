@@ -42,12 +42,15 @@ export default function Contact() {
           </div>
         </article>
       </section>
-      <section className="max-w-277.5 mx-auto flex flex-col gap-6 p-8 lg:flex-row lg:justify-between">
+      <section className="max-w-277.5 mx-auto flex flex-col gap-6 p-8 lg:py-12 lg:flex-row lg:justify-between">
         <h2 className="ibarra-real-nova text-3xl md:text-4xl lg:text-5xl font-bold">
           Contact Me
         </h2>
         <form action="" className="flex flex-col flex-1 lg:max-w-158.75">
-          <label htmlFor="name" className="py-2 public-sans text-xs font-bold text-slate-800">
+          <label
+            htmlFor="name"
+            className="py-2 public-sans text-xs font-bold text-slate-800"
+          >
             Name
           </label>
           <input
@@ -57,7 +60,10 @@ export default function Contact() {
             className="mt-1 public-sans text-xs bg-slate-800/10 text-slate-800 py-4 px-5"
           />
 
-          <label htmlFor="email" className="mt-4 py-2 public-sans text-xs font-bold text-slate-800">
+          <label
+            htmlFor="email"
+            className="mt-4 py-2 public-sans text-xs font-bold text-slate-800"
+          >
             Email Address
           </label>
           <input

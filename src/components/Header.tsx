@@ -29,7 +29,7 @@ export default function Header() {
   };
 
   return (
-    <header className="p-4 fixed z-1 md:p-8 bg-white w-full">
+    <header className="p-4 fixed z-10 md:p-8 bg-white w-full">
       <nav aria-label="Primary" className="flex justify-between align-center items-center">
         {/* <img src={logo} alt="" className="block" /> */}
         <NavLink to="/" end className="momo-signature hover:text-blue-500">
@@ -57,12 +57,12 @@ export default function Header() {
             <NavLink to="/projects" className={navClass}>
               Projects
             </NavLink>
-          </li>
+          </li> */}
           <li className="flex items-center">
             <NavLink to="/resume" className={navClass}>
               Resume
             </NavLink>
-          </li> */}
+          </li>
           <li className="flex items-center">
             <NavLink to="/contact" className={navClass}>
               Contact Me
@@ -91,7 +91,7 @@ export default function Header() {
               Projects
             </NavLink>
           </li> */}
-          {/* <li className="px-5 py-6">
+          <li className="px-5 py-6">
             <NavLink
               onClick={handleCloseMenu}
               to="/resume"
@@ -99,7 +99,7 @@ export default function Header() {
             >
               Resume
             </NavLink>
-          </li> */}
+          </li>
           <li className="px-5 py-6">
             <NavLink
               onClick={handleCloseMenu}
