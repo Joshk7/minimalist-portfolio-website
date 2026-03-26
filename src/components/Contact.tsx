@@ -1,10 +1,29 @@
 import githubDark from "../assets/icons/github-dark.svg";
 import linkedinDark from "../assets/icons/linkedin-dark.svg";
+import { useForm, ValidationError } from "@formspree/react";
 
+// TODO: Add proper frontend form validation
 export default function Contact() {
+  const [state, handleSubmit] = useForm("xzdkbakd");
+
+  if (state.succeeded) {
+    return (
+      <main className="pt-16 md:pt-24 flex flex-col justify-center">
+        <section className="max-w-277.5 mx-auto flex flex-col gap-6 px-8 lg:py-12">
+          <h2 className="ibarra-real-nova text-3xl md:text-4xl lg:text-5xl font-bold">
+            Thank you!
+          </h2>
+          <p className="public-sans text-slate-800/80 text-md md:text-lg lg:text-xl leading-[188%]">
+            Your message has been sent successfully. I will get back to you soon.
+          </p>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <main className="pt-16 md:pt-24">
-      <section className="max-w-277.5 mx-auto flex flex-col gap-6 px-8">
+      <section className="max-w-277.5 mx-auto flex flex-col gap-6 px-8 lg:py-12">
         <article className="py-8 border-y border-y-slate-800/15 flex flex-col gap-y-6 lg:flex-row lg:justify-between">
           <h2 className="ibarra-real-nova text-3xl md:text-4xl lg:text-5xl font-bold">
             Get in Touch
@@ -46,7 +65,10 @@ export default function Contact() {
         <h2 className="ibarra-real-nova text-3xl md:text-4xl lg:text-5xl font-bold">
           Contact Me
         </h2>
-        <form action="" className="flex flex-col flex-1 lg:max-w-158.75">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col flex-1 lg:max-w-158.75"
+        >
           <label
             htmlFor="name"
             className="py-2 public-sans text-xs font-bold text-slate-800"
@@ -56,8 +78,14 @@ export default function Contact() {
           <input
             id="name"
             type="text"
+            name="name"
             placeholder="John Doe"
-            className="mt-1 public-sans text-xs bg-slate-800/10 text-slate-800 py-4 px-5"
+            className={`mt-1 public-sans text-xs bg-slate-800/10 text-slate-800 py-4 px-5`}
+          />
+          <ValidationError 
+            prefix="Name" 
+            field="name"
+            errors={state.errors}
           />
 
           <label
@@ -69,8 +97,14 @@ export default function Contact() {
           <input
             id="email"
             type="email"
+            name="email"
             placeholder="email@example.com"
-            className="mt-1 public-sans text-xs bg-slate-800/10 text-slate-800 py-4 px-5"
+            className={`mt-1 public-sans text-xs bg-slate-800/10 text-slate-800 py-4 px-5`}
+          />
+          <ValidationError 
+            prefix="Email" 
+            field="email"
+            errors={state.errors}
           />
 
           <label
@@ -81,9 +115,16 @@ export default function Contact() {
           </label>
           <textarea
             id="message"
+            name="message"
             placeholder="How can I help?"
-            className="mt-1 public-sans text-xs bg-slate-800/10 text-slate-800 py-4 px-5 min-h-24 resize-none"
+            className={`mt-1 public-sans text-xs bg-slate-800/10 text-slate-800 py-4 px-5 min-h-24 resize-none`}
           ></textarea>
+          <ValidationError 
+            prefix="Message" 
+            field="message"
+            errors={state.errors}
+          />
+
           <button
             type="submit"
             className="public-sans text-xs self-start my-8 bg-blue-950 text-white uppercase py-4 px-6 cursor-pointer hover:bg-blue-500"
