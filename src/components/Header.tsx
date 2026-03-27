@@ -29,8 +29,11 @@ export default function Header() {
   };
 
   return (
-    <header className="p-4 fixed z-10 md:p-8 bg-white w-full">
-      <nav aria-label="Primary" className="flex justify-between align-center items-center">
+    <header className="p-4 fixed z-15 md:p-8 bg-white w-full">
+      <nav
+        aria-label="Primary"
+        className="flex justify-between align-center items-center"
+      >
         {/* <img src={logo} alt="" className="block" /> */}
         <NavLink to="/" end className="momo-signature hover:text-blue-500">
           Joshua Kahlbaugh
