@@ -1,10 +1,67 @@
+import { useState } from "react";
 import githubDark from "../assets/icons/github-dark.svg";
 import linkedinDark from "../assets/icons/linkedin-dark.svg";
 import { useForm, ValidationError } from "@formspree/react";
 
-// TODO: Add proper frontend form validation
 export default function Contact() {
   const [state, handleSubmit] = useForm("xzdkbakd");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "This field is required";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "This field is required";
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = "Please use a valid email address";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "This field is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (validateForm()) {
+      handleSubmit(e);
+    } else {
+      e.preventDefault();
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+  };
 
   if (state.succeeded) {
     return (
@@ -14,7 +71,8 @@ export default function Contact() {
             Thank you!
           </h2>
           <p className="public-sans text-slate-800/80 text-md md:text-lg lg:text-xl leading-[188%]">
-            Your message has been sent successfully. I will get back to you soon.
+            Your message has been sent successfully. I will get back to you
+            soon.
           </p>
         </section>
       </main>
@@ -66,9 +124,15 @@ export default function Contact() {
           Contact Me
         </h2>
         <form
-          onSubmit={handleSubmit}
+          onSubmit={onSubmit}
+          noValidate
           className="flex flex-col flex-1 lg:max-w-158.75"
         >
+          <div aria-live="polite" role="status" className="sr-only">
+            {errors.name || errors.email || errors.message
+              ? "There are validation errors in the form."
+              : ""}
+          </div>
           <label
             htmlFor="name"
             className="py-2 public-sans text-xs font-bold text-slate-800"
@@ -79,14 +143,19 @@ export default function Contact() {
             id="name"
             type="text"
             name="name"
+            value={formData.name}
+            onChange={handleChange}
             placeholder="John Doe"
+            required
             className={`mt-1 public-sans text-xs bg-slate-800/10 text-slate-800 py-4 px-5`}
           />
-          <ValidationError 
-            prefix="Name" 
-            field="name"
-            errors={state.errors}
-          />
+          {errors.name ? (
+            <span className="text-red-500 public-sans text-xs mt-1">
+              {errors.name}
+            </span>
+          ) : (
+            <ValidationError prefix="Name" field="name" errors={state.errors} />
+          )}
 
           <label
             htmlFor="email"
@@ -98,14 +167,23 @@ export default function Contact() {
             id="email"
             type="email"
             name="email"
+            value={formData.email}
+            onChange={handleChange}
             placeholder="email@example.com"
+            required
             className={`mt-1 public-sans text-xs bg-slate-800/10 text-slate-800 py-4 px-5`}
           />
-          <ValidationError 
-            prefix="Email" 
-            field="email"
-            errors={state.errors}
-          />
+          {errors.email ? (
+            <span className="text-red-500 public-sans text-xs mt-1">
+              {errors.email}
+            </span>
+          ) : (
+            <ValidationError
+              prefix="Email"
+              field="email"
+              errors={state.errors}
+            />
+          )}
 
           <label
             htmlFor="message"
@@ -116,14 +194,23 @@ export default function Contact() {
           <textarea
             id="message"
             name="message"
+            value={formData.message}
+            onChange={handleChange}
             placeholder="How can I help?"
+            required
             className={`mt-1 public-sans text-xs bg-slate-800/10 text-slate-800 py-4 px-5 min-h-24 resize-none`}
           ></textarea>
-          <ValidationError 
-            prefix="Message" 
-            field="message"
-            errors={state.errors}
-          />
+          {errors.message ? (
+            <span className="text-red-500 public-sans text-xs mt-1">
+              {errors.message}
+            </span>
+          ) : (
+            <ValidationError
+              prefix="Message"
+              field="message"
+              errors={state.errors}
+            />
+          )}
 
           <button
             type="submit"
