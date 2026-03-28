@@ -32,7 +32,7 @@ export default function Header() {
     <header className="p-4 fixed z-15 md:p-8 bg-white w-full">
       <nav
         aria-label="Primary"
-        className="flex justify-between align-center items-center"
+        className="max-w-277.5 mx-auto flex justify-between align-center items-center"
       >
         {/* <img src={logo} alt="" className="block" /> */}
         <NavLink to="/" end className="momo-signature hover:text-blue-500">
@@ -53,7 +53,7 @@ export default function Header() {
         <ul id="menu" className="hidden md:flex gap-10">
           <li className="flex items-center">
             <NavLink to="/" end className={navClass}>
-              Home
+              About
             </NavLink>
           </li>
           {/* <li className="flex items-center">
@@ -82,7 +82,7 @@ export default function Header() {
               end
               className={mobileNavClass}
             >
-              Home
+              About
             </NavLink>
           </li>
           {/* <li className="px-5 py-6">
