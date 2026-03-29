@@ -5,10 +5,10 @@ import close from "../assets/icons/close.svg";
 import Dialog from "./Dialog";
 
 const navClass = ({ isActive }: { isActive: boolean }) =>
-  `text-sm public-sans tracking-[0.165em] uppercase hover:text-blue-500 ${isActive ? "text-blue-500" : "text-slate-950"}`;
+  `text-sm public-sans p-1 tracking-[0.165em] uppercase hover:text-blue-500 ${isActive ? "text-blue-500" : "text-slate-950"}`;
 
 const mobileNavClass = ({ isActive }: { isActive: boolean }) =>
-  `public-sans uppercase text-xs tracking-[0.165em] ${isActive ? "text-blue-500" : "text-white"}`;
+  `block w-full text-center p-1 public-sans uppercase text-xs tracking-[0.165em] ${isActive ? "text-blue-500" : "text-white"}`;
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -35,19 +35,19 @@ export default function Header() {
         className="max-w-277.5 mx-auto flex justify-between align-center items-center"
       >
         {/* <img src={logo} alt="" className="block" /> */}
-        <NavLink to="/" end className="momo-signature hover:text-blue-500">
+        <NavLink to="/" end className="momo-signature hover:text-blue-500 p-1">
           Joshua Kahlbaugh
         </NavLink>
         <button
           onClick={isMenuOpen ? handleCloseMenu : handleOpenMenu}
           aria-expanded={isMenuOpen}
           aria-controls="menu"
-          className="cursor-pointer md:hidden"
+          className="cursor-pointer flex justify-center items-center md:hidden min-w-8 min-h-8 hover:opacity-50"
         >
           <img
             src={isMenuOpen ? close : hamburger}
             alt=""
-            className="block min-w-6 hover:opacity-50"
+            className="block"
           />
         </button>
         <ul id="menu" className="hidden md:flex gap-10">
@@ -75,13 +75,8 @@ export default function Header() {
       </nav>
       <Dialog ref={menuRef}>
         <ul className="fixed top-16 right-0 flex flex-col items-center bg-slate-950">
-          <li className="px-5 py-6">
-            <NavLink
-              onClick={handleCloseMenu}
-              to="/"
-              end
-              className={mobileNavClass}
-            >
+          <li className="w-full p-4">
+            <NavLink to="/" end className={mobileNavClass}>
               About
             </NavLink>
           </li>
@@ -94,21 +89,13 @@ export default function Header() {
               Projects
             </NavLink>
           </li> */}
-          <li className="px-5 py-6">
-            <NavLink
-              onClick={handleCloseMenu}
-              to="/resume"
-              className={mobileNavClass}
-            >
+          <li className="w-full p-4">
+            <NavLink to="/resume" className={mobileNavClass}>
               Resume
             </NavLink>
           </li>
-          <li className="px-5 py-6">
-            <NavLink
-              onClick={handleCloseMenu}
-              to="/contact"
-              className={mobileNavClass}
-            >
+          <li className="w-full p-4">
+            <NavLink to="/contact" className={mobileNavClass}>
               Contact Me
             </NavLink>
           </li>

@@ -25,7 +25,7 @@ export default function Resume() {
               href="/JoshuaKahlbaughResume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="border bg-white border-slate-950 py-4 px-8 public-sans uppercase tracking-[0.165em] text-xs cursor-pointer hover:bg-slate-950 hover:text-white"
+              className="border bg-white border-slate-950 p-4 public-sans uppercase tracking-[0.165em] text-xs cursor-pointer hover:bg-slate-950 hover:text-white"
             >
               Download Resume
             </a>

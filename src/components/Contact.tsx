@@ -214,7 +214,7 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="public-sans text-xs self-start my-8 bg-blue-950 text-white uppercase py-4 px-6 cursor-pointer hover:bg-blue-500"
+            className="public-sans text-xs self-start my-8 bg-slate-950 text-white uppercase py-4 px-6 cursor-pointer hover:bg-blue-500"
           >
             Send message
           </button>
