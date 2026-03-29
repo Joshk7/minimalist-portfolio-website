@@ -16,7 +16,7 @@ export default function Resume() {
     <main className="pt-16 md:pt-24">
       <section className="relative flex flex-col justify-center items-center p-8 gap-8">
         <div className="group relative shadow-lg">
-          <div className="absolute hidden lg:block inset-0 z-5 pointer-events-none transition-colors opacity-0 group-hover:opacity-100">
+          {/* <div className="absolute hidden lg:block inset-0 z-5 pointer-events-none transition-colors opacity-0 group-hover:opacity-100">
             <div className="h-full w-full bg-black/50"></div>
           </div>
 
@@ -29,7 +29,7 @@ export default function Resume() {
             >
               Download Resume
             </a>
-          </div>
+          </div> */}
 
           <Document file="/JoshuaKahlbaughResume.pdf">
             <Page pageNumber={1} scale={screenWidth >= 1000 ? 1.3 : scale} />
@@ -40,7 +40,7 @@ export default function Resume() {
           href="/JoshuaKahlbaughResume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="lg:hidden border bg-white border-slate-950 p-4 public-sans uppercase tracking-[0.165em] text-xs cursor-pointer hover:bg-slate-950 hover:text-white"
+          className="border bg-white border-slate-950 p-4 public-sans uppercase tracking-[0.165em] text-xs cursor-pointer hover:bg-slate-950 hover:text-white"
         >
           Download Resume
         </a>
