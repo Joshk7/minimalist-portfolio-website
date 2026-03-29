@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import hamburger from "../assets/icons/hamburger.svg";
 import close from "../assets/icons/close.svg";
 import Dialog from "./Dialog";
@@ -11,13 +11,24 @@ const mobileNavClass = ({ isActive }: { isActive: boolean }) =>
   `block w-full text-center p-1 public-sans uppercase text-xs tracking-[0.165em] ${isActive ? "text-blue-500" : "text-white"}`;
 
 export default function Header() {
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDialogElement>(null);
+  const aboutRef = useRef<HTMLAnchorElement>(null);
+  const resumeRef = useRef<HTMLAnchorElement>(null);
+  const contactRef = useRef<HTMLAnchorElement>(null);
 
   const handleOpenMenu = () => {
     if (menuRef.current) {
       setIsMenuOpen(true);
       menuRef.current.show();
+      if (location.pathname === '/') {
+        aboutRef.current?.focus();
+      } else if (location.pathname === '/resume') {
+        resumeRef.current?.focus();
+      } else if (location.pathname === '/contact') {
+        contactRef.current?.focus();
+      }
     }
   };
 
@@ -35,7 +46,7 @@ export default function Header() {
         className="max-w-277.5 mx-auto flex justify-between align-center items-center"
       >
         {/* <img src={logo} alt="" className="block" /> */}
-        <NavLink to="/" end className="momo-signature hover:text-blue-500 p-1">
+        <NavLink to="/" end className="momo-signature hover:text-blue-500 p-1" >
           Joshua Kahlbaugh
         </NavLink>
         <button
@@ -76,7 +87,7 @@ export default function Header() {
       <Dialog ref={menuRef}>
         <ul className="fixed top-16 right-0 flex flex-col items-center bg-slate-950">
           <li className="w-full p-4">
-            <NavLink to="/" end className={mobileNavClass}>
+            <NavLink to="/" end className={mobileNavClass} onClick={handleCloseMenu} ref={aboutRef}>
               About
             </NavLink>
           </li>
@@ -90,12 +101,12 @@ export default function Header() {
             </NavLink>
           </li> */}
           <li className="w-full p-4">
-            <NavLink to="/resume" className={mobileNavClass}>
+            <NavLink to="/resume" className={mobileNavClass} onClick={handleCloseMenu} ref={resumeRef}>
               Resume
             </NavLink>
           </li>
           <li className="w-full p-4">
-            <NavLink to="/contact" className={mobileNavClass}>
+            <NavLink to="/contact" className={mobileNavClass} onClick={handleCloseMenu} ref={contactRef}>
               Contact Me
             </NavLink>
           </li>
